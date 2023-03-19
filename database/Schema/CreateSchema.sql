@@ -64,7 +64,7 @@ CREATE TABLE [Bookings] (
 	id integer NOT NULL,
 	bookingName varchar(50) NOT NULL,
 	email varchar(255) NOT NULL,
-	participants integer NOT NULL,
+	noOfParticipants integer NOT NULL,
 	bookingDateTime datetime NOT NULL,
 	statusId integer NOT NULL,
 	seatingId integer NOT NULL,
