@@ -1,4 +1,4 @@
-INSERT INTO bookingstatus(statusDescription)
+INSERT INTO bookingstatus(status_description)
 VALUES
 ('Pending'),
 ('Accepted'),
@@ -8,13 +8,13 @@ VALUES
 
 -- select * from BookingStatus;
 
-INSERT INTO location(locationDescription)
+INSERT INTO location(location_description)
 VALUES
 ('Inside'),
 ('Outside');
 
 
-INSERT INTO seatingtype(seatingTypeDescription)
+INSERT INTO seatingtype(seating_type_description)
 Values
 ('2 Seater'),
 ('4 Seater'),
@@ -22,7 +22,7 @@ Values
 
 -- select * from SeatingType;-- 
 
-INSERT INTO seating(seatingTypeId, locationId)
+INSERT INTO seating(seating_type_id, location_id)
 VALUES
 (1, 1),
 (1, 2), 
@@ -33,7 +33,7 @@ VALUES
 
 -- select * from seating;
 
-INSERT INTO bookings(bookingName, email, noOfParticipants, bookingDateTime, statusId, seatingId)
+INSERT INTO bookings(booking_name, email, no_of_participants, booking_date_time, status_id, seating_id)
 VALUES
 ('Emily', 'emily@gmail.com', 3, CAST('2022-03-20T10:30:00.000' AS DateTime), 2, 3),
 ('Liam', 'liam@gmail.com', 2, CAST('2022-03-30T18:00:00.000' AS DateTime), 2, 2),
