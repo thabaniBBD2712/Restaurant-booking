@@ -24,13 +24,13 @@ public class BookingService {
 	@Query("SELECT b FROM Bookings b")
 	public List<Booking> getAllBookings()  
 	{    
-	List<Booking>bookings = new ArrayList<>();    
-	bookingRepository.findAll().forEach(bookings::add);    
-	return bookings;
+		List<Booking>bookings = new ArrayList<>();    
+		bookingRepository.findAll().forEach(bookings::add);    
+		return bookings;
 	}
 	
 	public void addBooking(Booking booking)  
 	{    
-	bookingRepository.save(booking);        
+		bookingRepository.save(booking);        
 	}    
 }
