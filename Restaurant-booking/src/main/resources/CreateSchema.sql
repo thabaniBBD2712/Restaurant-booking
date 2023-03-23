@@ -1,53 +1,46 @@
-drop database bookingsdb;
-
-create database bookingsdb;
-
-use bookingsdb;
-
 CREATE TABLE `bookings` (
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`bookingName` varchar(50) NOT NULL,
+	`booking_name` varchar(50) NOT NULL,
 	`email` varchar(255) NOT NULL,
-	`noOfParticipants` INT NOT NULL,
-	`bookingDateTime` DATETIME NOT NULL,
-	`statusId` INT NOT NULL,
-	`seatingId` INT NOT NULL,
+	`no_of_participants` INT NOT NULL,
+	`booking_date_time` DATETIME NOT NULL,
+	`status_id` INT NOT NULL,
+	`seating_id` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `seating` (
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`seatingTypeId` INT NOT NULL,
-	`locationId` INT NOT NULL,
+	`seating_type_id` INT NOT NULL,
+	`location_id` INT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `location` (
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`locationDescription` varchar(255) NOT NULL,
+	`location_description` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `bookingstatus` (
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`statusDescription` varchar(255) NOT NULL,
+	`status_description` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `seatingtype` (
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`seatingTypeDescription` varchar(255) NOT NULL,
+	`seating_type_description` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
-ALTER TABLE `bookings` ADD CONSTRAINT `bookings_fk0` FOREIGN KEY (`statusId`) REFERENCES `bookingstatus`(`id`);
+ALTER TABLE `bookings` ADD CONSTRAINT `bookings_fk0` FOREIGN KEY (`status_id`) REFERENCES `bookingstatus`(`id`);
 
-ALTER TABLE `bookings` ADD CONSTRAINT `bookings_fk1` FOREIGN KEY (`seatingId`) REFERENCES `seating`(`id`);
+ALTER TABLE `bookings` ADD CONSTRAINT `bookings_fk1` FOREIGN KEY (`seating_id`) REFERENCES `seating`(`id`);
 
-ALTER TABLE `seating` ADD CONSTRAINT `seating_fk0` FOREIGN KEY (`seatingTypeId`) REFERENCES `seatingtype`(`id`);
+ALTER TABLE `seating` ADD CONSTRAINT `seating_fk0` FOREIGN KEY (`seating_type_id`) REFERENCES `seatingtype`(`id`);
 
-ALTER TABLE `seating` ADD CONSTRAINT `seating_fk1` FOREIGN KEY (`locationId`) REFERENCES `location`(`id`);
-
+ALTER TABLE `seating` ADD CONSTRAINT `seating_fk1` FOREIGN KEY (`location_id`) REFERENCES `location`(`id`);
 
 
 
