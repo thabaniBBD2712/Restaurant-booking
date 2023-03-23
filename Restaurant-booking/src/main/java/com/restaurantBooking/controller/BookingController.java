@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.restaurantBooking.service.BookingService;
 import com.restaurantBooking.models.Booking;
+import com.restaurantBooking.models.UpdateBookingStatus;
 import com.restaurantBooking.repository.BookingRepository;  
 
 @RestController
@@ -41,27 +42,22 @@ public class BookingController {
 	{    
 		try {
 			Booking newBooking = bookingService.addBooking(booking);    
-			return new ResponseEntity<Booking>(newBooking, HttpStatus.OK)
+			return new ResponseEntity<Booking>(newBooking, HttpStatus.OK);
 		}
 		catch (DataAccessException e) {
 			return new ResponseEntity<Booking>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}       
 	
-	@RequestMapping(value="/update-booking/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Booking> updateBookingStatus(@PathVariable("id") int id, @RequestBody Booking booking){
+	@RequestMapping(value="/update-booking-status/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Booking> updateBookingStatus(@PathVariable("id") int id, @RequestBody UpdateBookingStatus updateBooking){
 		Optional<Booking> bookingDataOptional = bookingRepository.findById(String.format("%d", id));
 		
 		if(bookingDataOptional.isPresent())
 		{
-			Booking bookingTemp = bookingDataOptional.get();
-			bookingTemp.setBookingName(booking.getBookingName());
-			bookingTemp.setEmail(booking.getEmail());
-			bookingTemp.setNumberOfParticipants(booking.getNumberOfParticipants());
-			bookingTemp.setBookingDateTime(booking.getBookingDateTime());
-			bookingTemp.setStatusId(booking.getStatusId());
-			bookingTemp.setSeatingId(booking.getSeatingId());
-			return new ResponseEntity<Booking>(bookingRepository.save(bookingTemp), HttpStatus.OK);
+			Booking booking = bookingDataOptional.get();
+			booking.setStatusId(updateBooking.getNewStatusIntegerValue());
+			return new ResponseEntity<Booking>(bookingRepository.save(booking), HttpStatus.OK);
 		}
 		else {
 			return new ResponseEntity<Booking>(HttpStatus.NOT_FOUND);
