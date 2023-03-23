@@ -13,16 +13,16 @@ import jakarta.persistence.Table;
 public class Booking {
 	private @Id @GeneratedValue int id;
 	
-	@Column(name = "booking_name")
+	@Column(name = "bookingName")
 	private String bookingName;
 	@Column(name = "email")
 	private String email;
-	@Column(name = "no_of_participants")
+	@Column(name = "noOfParticipants")
 	private int numberOfParticipants;
-	@Column(name = "booking_date_time")
+	@Column(name = "bookingDateTime")
 	private LocalDate bookingDateTime;
-	@Column(name = "status_id")
+	@Column(name = "statusId")
 	private int statusId;
-	@Column(name = "seating_id")
+	@Column(name = "seatingId")
 	private int seatingId;
 }
