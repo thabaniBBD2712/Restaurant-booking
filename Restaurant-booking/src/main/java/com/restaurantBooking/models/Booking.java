@@ -1,5 +1,7 @@
 package com.restaurantBooking.models;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,20 +9,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Bookings")
+@Table(name = "bookings")
 public class Booking {
 	private @Id @GeneratedValue int id;
 	
-	@Column(name = "bookingName")
+	@Column(name = "booking_name")
 	private String bookingName;
 	@Column(name = "email")
 	private String email;
-	@Column(name = "noOfParticipants")
+	@Column(name = "no_of_participants")
 	private int numberOfParticipants;
-	@Column(name = "bookingDateTime")
-	private String bookingDateTime;
-	@Column(name = "statusId")
+	@Column(name = "booking_date_time")
+	private LocalDate bookingDateTime;
+	@Column(name = "status_id")
 	private int statusId;
-	@Column(name = "seatingId")
+	@Column(name = "seating_id")
 	private int seatingId;
 }

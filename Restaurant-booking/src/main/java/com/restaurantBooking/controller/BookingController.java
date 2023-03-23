@@ -16,7 +16,7 @@ public class BookingController {
 	@Autowired
 	private BookingService bookingService;
 	
-	@RequestMapping("/get-booking")
+	@RequestMapping(value="/get-booking", method=RequestMethod.GET)
 	public List<Booking> getBooking(){
 		return bookingService.getAllBookings();
 	}
