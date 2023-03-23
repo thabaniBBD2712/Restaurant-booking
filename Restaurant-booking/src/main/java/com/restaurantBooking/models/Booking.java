@@ -25,4 +25,39 @@ public class Booking {
 	private int statusId;
 	@Column(name = "seatingId")
 	private int seatingId;
+	
+	@Override
+	  public String toString() {
+	    return String.format(
+	        "Customer[id=%d, bookingName='%s', email='%s', numberOfParticipants='%s', bookingDateTime='%s', statusId='%s', seatingId='%s']",
+	        id, bookingName, email, numberOfParticipants, bookingDateTime, statusId, seatingId);
+	  }
+
+	public int getId() {
+		return id;
+	}
+
+	public String getBookingName() {
+		return bookingName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public int getNumberOfParticipants() {
+		return numberOfParticipants;
+	}
+
+	public String getBookingDateTime() {
+		return bookingDateTime.toString();
+	}
+
+	public int getStatusId() {
+		return statusId;
+	}
+
+	public int getSeatingId() {
+		return seatingId;
+	}
 }
